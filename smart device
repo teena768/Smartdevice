@@ -1,0 +1,34 @@
+package project;
+
+public class SmartDevice {
+	    private static int activeDeviceCount = 0; // static member to count active devices
+	    private boolean isActive;
+
+	    public SmartDevice() {
+	        isActive = true;
+	        activeDeviceCount++; // increment when a device is created
+	        System.out.println("Device Activated. Active devices: " + activeDeviceCount);
+	    }
+
+	    public void deactivate() {
+	        if (isActive) {
+	            activeDeviceCount--; // decrement only if not already deactivated
+	            isActive = false;
+	            System.out.println("Device Deactivated. Active devices: " + activeDeviceCount);
+	        }
+	    }
+
+	    public static int getActiveDeviceCount() {
+	        return activeDeviceCount; // static method to get active device count
+	    }
+
+	    public static void main(String[] args) {
+	        SmartDevice d1 = new SmartDevice(); // 1 active
+	        SmartDevice d2 = new SmartDevice(); // 2 active
+	        SmartDevice d3 = new SmartDevice(); // 3 active
+
+	        d2.deactivate(); // now 2 active
+
+	        System.out.println("Total active devices (static): " + SmartDevice.getActiveDeviceCount());
+	    }
+	}
